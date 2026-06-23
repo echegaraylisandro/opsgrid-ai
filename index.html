@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpsGrid AI - Reportes Automáticos para Minería & Oil/Gas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #667eea;
+        }
+
+        .problem {
+            background: #f8f9ff;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .problem-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .problem-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .problem-list li:before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .pricing-card.featured {
+            border-color: #667eea;
+            transform: scale(1.05);
+            background: white;
+        }
+
+        .pricing-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin: 25px 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .features-list li:before {
+            content: "✅ ";
+            color: #667eea;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .problem-grid, .benefits-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🤖 OpsGrid AI</div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Reportes Operacionales 100% Automáticos</h1>
+            <p>Para mineras y empresas de oil/gas. Ahorro de 60 horas/mes + decisiones basadas en datos.</p>
+            <a href="https://wa.me/542646237364?text=Hola%20Lisandro%2C%20quiero%20conocer%20OpsGrid%20AI" class="cta-button">
+                📞 Solicitar Demo Gratis
+            </a>
+        </div>
+    </div>
+
+    <section class="problem">
+        <div class="container">
+            <h2>El problema que resuelve</h2>
+            <div class="problem-grid">
+                <div>
+                    <h3>¿Cuánto tiempo gastás en reportes cada día?</h3>
+                    <ul class="problem-list">
+                        <li>Escribir solicitudes de informe</li>
+                        <li>Copiar en WhatsApp</li>
+                        <li>Leer respuestas</li>
+                        <li>Organizar información</li>
+                        <li>Hacer reporte consolidado</li>
+                        <li>Presentar a dirección</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-weight: bold; color: #667eea;">
+                        2.5 horas/día = $12,500/año en costos
+                    </p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 10px; text-align: center;">
+                    <div style="margin: 20px 0;">
+                        <div style="font-size: 36px; font-weight: bold; color: #667eea;">2.5h</div>
+                        <div style="color: #666;">Tiempo manual/día</div>
+                    </div>
+                    <div style="margin: 20px 0;">
+                        <div style="font-size: 36px; font-weight: bold; color: #667eea;">$12,500</div>
+                        <div style="color: #666;">Costo anual en horas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: white;">
+        <div class="container">
+            <h2>La solución: OpsGrid AI</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>100% Automático</h3>
+                    <p>Envía informes a hora exacta, lee respuestas, genera reportes. Sin intervención manual.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Datos Inteligentes</h3>
+                    <p>Análisis automático: proactividad, cumplimiento, alertas. Decisiones basadas en hechos.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3>Ahorro Inmediato</h3>
+                    <p>60 horas/mes ahorradas. ROI positivo en 2 meses. Desde el primer día.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <h2>Caso de éxito: Académica SRL</h2>
+            <div style="background: white; padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+                <p><strong>El problema:</strong> Lisandro escribía reportes manualmente cada día. 2.5 horas/día.</p>
+                <div style="background: #f0f4ff; padding: 20px; margin: 20px 0; border-left: 4px solid #667eea;">
+                    <strong style="color: #667eea; font-size: 18px;">Resultado:</strong> 100% automático. De 2.5h a 0 minutos.
+                </div>
+                <p><strong>Beneficios:</strong></p>
+                <ul class="problem-list">
+                    <li>Ahorro: 60 horas/mes</li>
+                    <li>Indicadores automáticos</li>
+                    <li>Alertas en tiempo real</li>
+                    <li>Dashboard con tendencias</li>
+                </ul>
+                <div style="background: #f0f4ff; padding: 20px; margin: 20px 0; border-left: 4px solid #667eea;">
+                    <strong style="color: #667eea;">ROI: +$700/mes desde el mes 1</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: white;">
+        <div class="container">
+            <h2>Planes simples y transparentes</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>BASIC</h3>
+                    <div class="price">$500<span style="font-size: 16px; color: #666;">/mes</span></div>
+                    <p style="color: #666; margin-bottom: 20px;">Para mineras pequeñas (10-20 personas)</p>
+                    <ul class="features-list">
+                        <li>Informe diario automático</li>
+                        <li>Dashboard básico</li>
+                        <li>Indicadores clave</li>
+                        <li>Alertas críticas</li>
+                        <li>1 usuario</li>
+                    </ul>
+                    <button class="btn-primary">Comenzar</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>PROFESSIONAL</h3>
+                    <div class="price">$1,200<span style="font-size: 16px; color: #666;">/mes</span></div>
+                    <p style="color: #666; margin-bottom: 20px;">Para mineras medianas (20-50 personas)</p>
+                    <ul class="features-list">
+                        <li>Todo del plan BASIC +</li>
+                        <li>Múltiples turnos</li>
+                        <li>Análisis avanzado</li>
+                        <li>Reportes personalizados</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <button class="btn-primary">Comenzar</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>ENTERPRISE</h3>
+                    <div class="price">Contactar<span style="font-size: 16px; color: #666;">/mes</span></div>
+                    <p style="color: #666; margin-bottom: 20px;">Para empresas grandes (50+ personas)</p>
+                    <ul class="features-list">
+                        <li>Todo del plan PROFESSIONAL +</li>
+                        <li>Integraciones custom</li>
+                        <li>API propia</li>
+                        <li>Soporte 24/7</li>
+                        <li>Análisis predictivo</li>
+                    </ul>
+                    <button class="btn-primary">Contactar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Listo para automatizar?</h2>
+            <p>7 días gratis. Sin tarjeta. Sin compromiso.</p>
+            <a href="https://wa.me/542646237364?text=Hola%20Lisandro%2C%20quiero%20probar%20OpsGrid%20AI%20durante%207%20d%C3%ADas%20gratis" class="cta-button">
+                📞 Pedir Demo Gratis
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <h3>OpsGrid AI</h3>
+        <p>Automatización inteligente para minería y oil/gas</p>
+        <p style="margin-top: 20px;">
+            📱 WhatsApp: <a href="https://wa.me/542646237364" style="color: #667eea;">+54 9 264 623-7364</a><br>
+            📧 hello@opsgrid.com
+        </p>
+        <p style="margin-top: 30px; color: #999; font-size: 12px;">
+            © 2026 OpsGrid AI. Todos los derechos reservados.
+        </p>
+    </footer>
+</body>
+</html>
