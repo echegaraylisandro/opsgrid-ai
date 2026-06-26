@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ empresa.nombre }} — OpsGrid AI</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface2: #162032;
+      --border: #334155;
+      --amber: #f59e0b;
+      --amber-dim: rgba(245,158,11,0.15);
+      --amber-border: rgba(245,158,11,0.35);
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+      --green: #22c55e;
+      --green-dim: rgba(34,197,94,0.15);
+      --blue-dim: rgba(59,130,246,0.15);
+      --blue: #60a5fa;
+      --purple-dim: rgba(168,85,247,0.15);
+      --purple: #c084fc;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo em { color: var(--amber); font-style: normal; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-client {
+      font-size: 13px;
+      color: var(--muted2);
+      background: rgba(255,255,255,0.05);
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* MAIN */
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin-bottom: 32px;
+    }
+    .page-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .page-date {
+      color: var(--muted2);
+      font-size: 14px;
+    }
+
+    /* STAT CARDS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 18px;
+    }
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .stat-value.amber { color: var(--amber); }
+    .stat-value.green { color: var(--green); }
+    .stat-value.small { font-size: 14px; color: var(--muted2); margin-top: 3px; }
+
+    /* SECTION HEADER */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .btn-regen {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--amber);
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .btn-regen:hover { opacity: .85; }
+
+    /* MESSAGE CARD */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 14px;
+      transition: border-color .2s;
+    }
+    .card:hover { border-color: #475569; }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .emp-name {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .emp-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 100px;
+    }
+    .badge-gerente  { background: var(--blue-dim);   color: var(--blue); }
+    .badge-jefe     { background: var(--amber-dim);  color: var(--amber); }
+    .badge-personal { background: rgba(100,116,139,.15); color: var(--muted2); }
+    .badge-asistente{ background: var(--purple-dim); color: var(--purple); }
+    .wa-num {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: ui-monospace, monospace;
+    }
+
+    /* MESSAGE BUBBLE */
+    .bubble {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      color: #cbd5e1;
+      max-height: 148px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bubble.expanded { max-height: none; }
+    .bubble:not(.expanded)::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 48px;
+      background: linear-gradient(transparent, var(--surface2));
+      pointer-events: none;
+    }
+
+    /* ACTIONS */
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .btn-copy {
+      background: var(--amber-dim);
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+      border-radius: 7px;
+      padding: 7px 15px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-copy:hover { background: rgba(245,158,11,.25); }
+    .btn-copy.ok {
+      background: var(--green-dim);
+      color: var(--green);
+      border-color: rgba(34,197,94,.3);
+    }
+    .btn-expand {
+      background: transparent;
+      color: var(--muted2);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 7px 15px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: color .15s;
+    }
+    .btn-expand:hover { color: var(--text); }
+
+    /* EMPTY */
+    .empty {
+      text-align: center;
+      padding: 64px 20px;
+      color: var(--muted);
+    }
+    .empty-icon { font-size: 44px; margin-bottom: 16px; }
+    .empty-title { font-size: 18px; font-weight: 600; color: var(--muted2); margin-bottom: 8px; }
+
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 16px; }
+      main { padding: 24px 16px 60px; }
+      .page-title { font-size: 20px; }
+    }
+    @media (max-width: 380px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">📊 Ops<em>Grid</em> AI</div>
+  <div class="nav-right">
+    <span class="nav-client">{{ empresa.nombre }}</span>
+  </div>
+</nav>
+
+<main>
+  <div class="page-header">
+    <div class="page-title">Panel Operativo</div>
+    <div class="page-date">{{ fecha | capitalize }}</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Turno activo</div>
+      {% if turno_label %}
+        <div class="stat-value amber">{{ turno_label }}</div>
+      {% else %}
+        <div class="stat-value small">No configurado</div>
+      {% endif %}
+    </div>
+    <div class="stat">
+      <div class="stat-label">Próximo cambio</div>
+      {% if dias_cambio >= 0 %}
+        <div class="stat-value">{{ dias_cambio + 1 }}<span style="font-size:14px;font-weight:400;color:var(--muted2)"> día{{ 's' if dias_cambio != 0 }}</span></div>
+      {% else %}
+        <div class="stat-value small">—</div>
+      {% endif %}
+    </div>
+    <div class="stat">
+      <div class="stat-label">Mensajes listos</div>
+      <div class="stat-value green">{{ total }}</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Operación</div>
+      <div class="stat-value small">{{ empresa.get('sitio_operacion', empresa.get('ubicacion', '—')) }}</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title">Mensajes de hoy</div>
+    <form action="/{{ cliente_id }}/generar" method="post">
+      <button type="submit" class="btn-regen">↻ Regenerar</button>
+    </form>
+  </div>
+
+  {% if mensajes %}
+    {% for m in mensajes %}
+    {% set emp = m.empleado %}
+    {% set rol = emp.get('rol', '') %}
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <div class="emp-name">{{ emp.nombre }} {{ emp.get('apellido', '') }}</div>
+          <div class="emp-meta">
+            {% if 'gerente' in rol %}
+              <span class="badge badge-gerente">{{ rol.replace('gerente_','').replace('_',' ').title() }}</span>
+            {% elif rol == 'jefe_turno' %}
+              <span class="badge badge-jefe">Jefe de Turno</span>
+            {% elif rol == 'asistente_gerencia' %}
+              <span class="badge badge-asistente">Asistente</span>
+            {% else %}
+              <span class="badge badge-personal">Personal</span>
+            {% endif %}
+            <span class="wa-num">{{ m.whatsapp }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="bubble" id="msg-{{ loop.index }}">{{ m.mensaje }}</div>
+      <div class="card-actions">
+        <button class="btn-copy" onclick="copiar({{ loop.index }}, this)">📋 Copiar</button>
+        <button class="btn-expand" onclick="expandir({{ loop.index }}, this)">Ver completo</button>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty">
+      <div class="empty-icon">📭</div>
+      <div class="empty-title">Sin mensajes para hoy</div>
+      <div>El turno puede no estar configurado o no hay empleados activos.</div>
+    </div>
+  {% endif %}
+</main>
+
+<script>
+function copiar(idx, btn) {
+  const txt = document.getElementById('msg-' + idx).innerText;
+  navigator.clipboard.writeText(txt).then(() => {
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = '📋 Copiar'; btn.classList.remove('ok'); }, 2000);
+  });
+}
+function expandir(idx, btn) {
+  const el = document.getElementById('msg-' + idx);
+  const exp = el.classList.toggle('expanded');
+  btn.textContent = exp ? 'Ver menos' : 'Ver completo';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "tipo_turno": "7x7",
+  "turno_a": {
+    "jefe": "jefe_turno_a",
+    "nombre": "Turno A",
+    "fecha_inicio_referencia": "2026-06-23"
+  },
+  "turno_b": {
+    "jefe": "jefe_turno_b",
+    "nombre": "Turno B"
+  },
+  "personal_turno_a": ["operario_a1"],
+  "personal_turno_b": ["operario_b1"]
+}

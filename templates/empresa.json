@@ -1,0 +1,10 @@
+{
+  "_instrucciones": "Completá todos los campos. Eliminá las líneas que empiecen con '_'.",
+  "nombre": "COMPLETAR — Nombre de tu empresa (ej: Catering Minero SRL)",
+  "zona_horaria": "America/Argentina/Buenos_Aires",
+  "_zonas": "Otras opciones: America/Santiago, America/Lima, America/Bogota, America/La_Paz",
+  "contacto_supervisor": "COMPLETAR — Nombre del responsable que revisa los borradores",
+  "whatsapp_supervisor": "COMPLETAR — +54911XXXXXXXX",
+  "email_supervisor": "COMPLETAR — supervisor@tuempresa.com",
+  "sitio_operacion": "COMPLETAR — Nombre del yacimiento / campo / plataforma donde operás"
+}

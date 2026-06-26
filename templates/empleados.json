@@ -1,0 +1,31 @@
+[
+  {
+    "_nota": "Roles válidos: gerente_operativo, gerente_comercial, gerente_administrativo, asistente_gerencia, jefe_turno, personal_operativo",
+    "_nota2": "turno: 'gerencia' (recibe informe todos los días), 'turno_a' o 'turno_b' (solo cuando está en campo)",
+    "id": "ejemplo_gerente",
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "rol": "gerente_operativo",
+    "turno": "gerencia",
+    "whatsapp": "+54911XXXXXXXX",
+    "activo": true
+  },
+  {
+    "id": "ejemplo_jefe_a",
+    "nombre": "Carlos",
+    "apellido": "López",
+    "rol": "jefe_turno",
+    "turno": "turno_a",
+    "whatsapp": "+54911XXXXXXXX",
+    "activo": true
+  },
+  {
+    "id": "ejemplo_operario_a1",
+    "nombre": "Pedro",
+    "apellido": "García",
+    "rol": "personal_operativo",
+    "turno": "turno_a",
+    "whatsapp": "+54911XXXXXXXX",
+    "activo": true
+  }
+]

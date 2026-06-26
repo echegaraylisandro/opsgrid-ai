@@ -1,0 +1,37 @@
+{
+  "gerente_operativo": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito el *informe operativo del día*, {fecha}.",
+    "items": [
+      "⛏️ *Novedades del yacimiento*: situación general del servicio en campo",
+      "👥 *Estado del personal de turno*: asistencia, puntualidad, novedades",
+      "🍽️ *Servicio del día*: estado de la operación gastronómica",
+      "⚠️ *Incidencias operativas*: problemas, accidentes, imprevistos",
+      "📋 *Pendientes para las próximas 24 horas*"
+    ],
+    "cierre": "Gracias, {nombre}. Tu reporte es fundamental para el control general. 🙏"
+  },
+  "jefe_turno": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito el *informe del turno* del día {fecha}.",
+    "items": [
+      "👥 *Personal presente*: asistencia y novedades",
+      "🍽️ *Servicios del día*: desayuno, almuerzo, merienda y cena — hora y cubiertos atendidos",
+      "🛒 *Insumos y stock*: faltantes, pedidos necesarios",
+      "⚠️ *Incidencias del turno*: problemas o situaciones especiales",
+      "🔄 *Novedades para el próximo turno*"
+    ],
+    "cierre": "Gracias por tu reporte. Buena jornada! ⛏️🙏"
+  },
+  "personal_operativo": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito tu *reporte diario* del {fecha}.",
+    "items": [
+      "✅ *Tareas realizadas hoy*: área de trabajo y actividades completadas",
+      "🧹 *Limpieza e higiene*: tareas de saneamiento en tu sector",
+      "⚠️ *Novedades o inconvenientes*",
+      "📋 *¿Necesitás algo?*: insumos o equipamiento"
+    ],
+    "cierre": "Gracias, {nombre}! Bien hecho. ⛏️🙏"
+  }
+}

@@ -1,0 +1,16 @@
+# Client data (never commit real client configs)
+clientes/*/
+!clientes/ejemplo_catering_srl/
+
+# Runtime
+borradores/
+logs/
+__pycache__/
+*.py[cod]
+.env
+secrets.env
+config/secrets.env
+
+# OS
+.DS_Store
+Thumbs.db

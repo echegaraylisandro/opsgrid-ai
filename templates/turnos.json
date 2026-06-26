@@ -1,0 +1,18 @@
+{
+  "_instrucciones": "Configurá el sistema de rotación. Para 7x7: cada 7 días cambia el turno. Para 14x14: cada 14 días.",
+  "tipo_turno": "7x7",
+  "_tipos_validos": "7x7 | 14x14 | custom (si es custom, completá dias_ciclo)",
+  "dias_ciclo": 14,
+  "turno_a": {
+    "jefe": "COMPLETAR — id del jefe de turno A (ej: juan_perez)",
+    "nombre": "Turno A",
+    "fecha_inicio_referencia": "COMPLETAR-YYYY-MM-DD",
+    "_ayuda": "Ingresá la fecha en que empieza (o empezó) el Turno A. Desde ahí el sistema calcula todo automáticamente."
+  },
+  "turno_b": {
+    "jefe": "COMPLETAR — id del jefe de turno B",
+    "nombre": "Turno B"
+  },
+  "personal_turno_a": ["COMPLETAR — id1", "COMPLETAR — id2"],
+  "personal_turno_b": ["COMPLETAR — id3", "COMPLETAR — id4"]
+}

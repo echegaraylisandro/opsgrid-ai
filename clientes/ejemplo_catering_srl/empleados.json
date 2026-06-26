@@ -1,0 +1,47 @@
+[
+  {
+    "id": "roberto_sanchez",
+    "nombre": "Roberto",
+    "apellido": "Sánchez",
+    "rol": "gerente_operativo",
+    "turno": "gerencia",
+    "whatsapp": "+5492640000001",
+    "activo": true
+  },
+  {
+    "id": "jefe_turno_a",
+    "nombre": "Miguel",
+    "apellido": "Torres",
+    "rol": "jefe_turno",
+    "turno": "turno_a",
+    "whatsapp": "+5492640000002",
+    "activo": true
+  },
+  {
+    "id": "jefe_turno_b",
+    "nombre": "Diego",
+    "apellido": "Vera",
+    "rol": "jefe_turno",
+    "turno": "turno_b",
+    "whatsapp": "+5492640000003",
+    "activo": true
+  },
+  {
+    "id": "operario_a1",
+    "nombre": "Carlos",
+    "apellido": "Romero",
+    "rol": "personal_operativo",
+    "turno": "turno_a",
+    "whatsapp": "+5492640000004",
+    "activo": true
+  },
+  {
+    "id": "operario_b1",
+    "nombre": "Luis",
+    "apellido": "Mendoza",
+    "rol": "personal_operativo",
+    "turno": "turno_b",
+    "whatsapp": "+5492640000005",
+    "activo": true
+  }
+]

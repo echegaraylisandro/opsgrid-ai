@@ -1,0 +1,84 @@
+{
+  "_instrucciones": "Personalizá los mensajes para cada rol. Variables disponibles: {nombre}, {fecha}, {empresa}.",
+  "gerente_operativo": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito el *informe operativo del día*, {fecha}.",
+    "items": [
+      "⛏️ *Novedades del yacimiento*: situación general del servicio en campo",
+      "👥 *Estado del personal de turno*: asistencia, puntualidad, novedades",
+      "🛠️ *Servicio del día*: estado y novedades del servicio que prestamos",
+      "⚠️ *Incidencias operativas*: problemas, accidentes, imprevistos",
+      "📋 *Pendientes para las próximas 24 horas*"
+    ],
+    "cierre": "Gracias, {nombre}. Tu reporte es fundamental para el control general. 🙏"
+  },
+  "gerente_comercial": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Necesito el *informe comercial del día*, {fecha}.",
+    "items": [
+      "💼 *Gestiones comerciales* realizadas hoy",
+      "🤝 *Contactos con clientes o proveedores*: reuniones, llamadas, propuestas",
+      "💰 *Estado de contratos o licitaciones* activos",
+      "📈 *Oportunidades nuevas* detectadas",
+      "📅 *Agenda comercial* para los próximos días"
+    ],
+    "cierre": "Gracias, {nombre}. Quedo a disposición para lo que necesites. 🙏"
+  },
+  "gerente_administrativo": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito el *informe administrativo del día*, {fecha}.",
+    "items": [
+      "💵 *Movimientos de caja o banco* del día",
+      "🧾 *Facturas o comprobantes* emitidos/recibidos",
+      "📑 *Documentación o trámites* procesados",
+      "👷 *Novedades de RRHH*: horas extra, ausencias, liquidaciones",
+      "⚠️ *Vencimientos urgentes* o pendientes a resolver"
+    ],
+    "cierre": "Gracias, {nombre}. Tu informe es clave para el control financiero. 🙏"
+  },
+  "asistente_gerencia": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te pido el *informe de asistencia del día*, {fecha}.",
+    "items": [
+      "📞 *Comunicaciones gestionadas*: llamadas, emails, mensajes importantes",
+      "📅 *Agenda ejecutiva*: reuniones coordinadas o recordatorios del día",
+      "📝 *Documentos o reportes* preparados o distribuidos",
+      "⏳ *Pendientes para mañana*"
+    ],
+    "cierre": "Gracias, {nombre}. Quedamos en contacto. 🙏"
+  },
+  "jefe_turno": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito el *informe del turno* del día {fecha}.",
+    "items": [
+      "👥 *Personal presente*: quiénes están en turno hoy y novedades de asistencia",
+      "🛠️ *Servicio del día*: estado general del servicio prestado",
+      "🛒 *Insumos y materiales*: faltantes detectados, pedidos necesarios",
+      "⚠️ *Incidencias del turno*: problemas, accidentes, situaciones especiales",
+      "🔄 *Novedades para el próximo turno*: qué debe saber el jefe que te releva"
+    ],
+    "cierre": "Gracias por tu reporte. Buena jornada! ⛏️🙏"
+  },
+  "personal_operativo": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito tu *reporte diario* del {fecha}.",
+    "items": [
+      "✅ *Tareas realizadas hoy*: en qué trabajaste y qué completaste",
+      "⚠️ *Novedades o inconvenientes*: algo que deba saber el jefe de turno",
+      "📋 *¿Necesitás algo?*: insumos, herramientas, equipamiento"
+    ],
+    "cierre": "Gracias, {nombre}! ⛏️🙏"
+  },
+  "personal_gastronomico": {
+    "saludo": "Buenos días, {nombre}! 👋",
+    "intro": "Soy de administración de {empresa}. Te solicito tu *reporte diario de actividades* del {fecha}.",
+    "items": [
+      "✅ *Tareas realizadas hoy*: en qué área trabajaste y qué preparaste o serviste",
+      "🍳 *Producción del día*: platos, comidas o preparaciones a tu cargo",
+      "🧹 *Limpieza y orden*: tareas de higiene realizadas en tu sector",
+      "⚠️ *Novedades o inconvenientes*: algo que deba saber el jefe de turno",
+      "📋 *¿Necesitás algo?*: insumos, herramientas, ropa de trabajo"
+    ],
+    "cierre": "Gracias, {nombre}! Bien hecho. ⛏️🙏"
+  }
+}
